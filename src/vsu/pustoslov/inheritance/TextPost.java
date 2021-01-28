@@ -2,7 +2,7 @@ package vsu.pustoslov.inheritance;
 
 import java.util.Calendar;
 
-public class TextPost extends AbstractPost {
+public class TextPost extends AbstractPost implements Post {
     private final int numberOfWords;
 
     public TextPost(String creator, Calendar date, TypeOfMessage typeOfMessage, int numberOfWords, String message) {
@@ -17,5 +17,10 @@ public class TextPost extends AbstractPost {
     @Override
     public void showMaxSizeOfPost() {
         System.out.println("Max size of post: " + 10 + " Mb");
+    }
+
+    @Override
+    public void printPost() {
+        System.out.println("Thanks for reading!");
     }
 }

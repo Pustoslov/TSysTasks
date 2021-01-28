@@ -18,20 +18,24 @@ public class Execution {
 
         showContent(textPost1);
         textPost1.printNumberOfWords();
+        textPost1.printPost();
         System.out.println();
 
         showContent(picture1);
         printRealSizeOfMedia(picture1);
         picture1.printBlackAndWhitePicture();
+        picture1.printPost();
         System.out.println();
 
         showContent(music1);
         printRealSizeOfMedia(music1);
         music1.printTrackDuration();
+        music1.play();
         System.out.println();
 
         showContent(video1);
         video1.printResolution();
+        video1.play();
         System.out.println();
 
         showContent(gif1);
