@@ -16,39 +16,42 @@ public class Execution {
         Media gif1 = new Media("Masha", new GregorianCalendar(2018, Calendar.JANUARY, 7),
                 TypeOfMessage.POST, 1, "Lol");
 
-        showContent(textPost1);
-        textPost1.printNumberOfWords();
-        textPost1.printPost();
-        System.out.println();
+        AbstractPost[] arrOfAbstractPosts = {textPost1, picture1, music1, video1, gif1};
 
-        showContent(picture1);
-        printRealSizeOfMedia(picture1);
-        picture1.printBlackAndWhitePicture();
-        picture1.printPost();
-        System.out.println();
+        for (AbstractPost abstractPost : arrOfAbstractPosts) {
+            abstractPost.showContent();
+            abstractPost.showMaxSizeOfPost();
 
-        showContent(music1);
-        printRealSizeOfMedia(music1);
-        music1.printTrackDuration();
-        music1.play();
-        System.out.println();
+            if (abstractPost instanceof TextPost) {
+                ((TextPost)abstractPost).printPost();
+                ((TextPost)abstractPost).printNumberOfWords();
+            }
 
-        showContent(video1);
-        video1.printResolution();
-        video1.play();
-        System.out.println();
+            if (abstractPost instanceof  Printable) {
+                ((Printable) abstractPost).printPost();
+            }
 
-        showContent(gif1);
-        printRealSizeOfMedia(gif1);
-        System.out.println();
-    }
+            if (abstractPost instanceof Playable) {
+                ((Playable) abstractPost).play();
+            }
 
-    private static void showContent(AbstractPost abstractPost) {
-        abstractPost.showContent();
-        abstractPost.showMaxSizeOfPost();
-    }
+            if (abstractPost instanceof Media) {
+                ((Media)abstractPost).printRealSize();
+            }
 
-    private static void printRealSizeOfMedia(Media media) {
-        media.printRealSize();
+            if (abstractPost instanceof Music) {
+                ((Music)abstractPost).printTrackDuration();
+            }
+
+            if (abstractPost instanceof Picture) {
+                ((Picture)abstractPost).printBlackAndWhitePicture();
+            }
+
+            if (abstractPost instanceof Video) {
+                ((Video)abstractPost).printResolution();
+            }
+
+            System.out.println("----------------------------");
+        }
     }
 }
