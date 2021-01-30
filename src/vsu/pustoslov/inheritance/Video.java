@@ -2,7 +2,7 @@ package vsu.pustoslov.inheritance;
 
 import java.util.Calendar;
 
-public class Video extends Media implements Recording {
+public class Video extends Media implements Playable {
     private final int resolution;
 
 

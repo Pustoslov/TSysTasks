@@ -2,7 +2,7 @@ package vsu.pustoslov.inheritance;
 
 import java.util.Calendar;
 
-public class Music extends Media implements Recording{
+public class Music extends Media implements Playable {
     private final int durationInSecs;
 
     public Music(String creator, Calendar date, TypeOfMessage typeOfMessage, int realSize, int durationInSecs, String message) {

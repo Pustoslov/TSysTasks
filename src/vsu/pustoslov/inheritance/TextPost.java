@@ -2,7 +2,7 @@ package vsu.pustoslov.inheritance;
 
 import java.util.Calendar;
 
-public class TextPost extends AbstractPost implements Post {
+public class TextPost extends AbstractPost implements Printable {
     private final int numberOfWords;
 
     public TextPost(String creator, Calendar date, TypeOfMessage typeOfMessage, int numberOfWords, String message) {

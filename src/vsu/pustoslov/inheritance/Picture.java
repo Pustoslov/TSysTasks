@@ -2,7 +2,7 @@ package vsu.pustoslov.inheritance;
 
 import java.util.Calendar;
 
-public class Picture extends Media implements Post {
+public class Picture extends Media implements Printable {
     private final boolean itIsBlackAndWhitePicture;
 
     public Picture(String creator, Calendar date, TypeOfMessage typeOfMessage, int realSize,

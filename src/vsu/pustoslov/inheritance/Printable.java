@@ -1,5 +1,5 @@
 package vsu.pustoslov.inheritance;
 
-public interface Post {
+public interface Printable {
     void printPost ();
 }

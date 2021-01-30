@@ -1,5 +1,5 @@
 package vsu.pustoslov.inheritance;
 
-public interface Recording {
+public interface Playable {
     void play ();
 }
