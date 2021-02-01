@@ -1,12 +1,12 @@
 package vsu.pustoslov.inheritance;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class Video extends Media implements Playable {
     private final int resolution;
 
 
-    public Video(String creator, Calendar date, TypeOfMessage typeOfMessage, int realSize, int resolution,
+    public Video(String creator, Date date, TypeOfMessage typeOfMessage, int realSize, int resolution,
                  String message) {
         super(creator, date, typeOfMessage, realSize, message);
         this.resolution = resolution;

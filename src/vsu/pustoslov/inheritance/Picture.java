@@ -1,11 +1,11 @@
 package vsu.pustoslov.inheritance;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class Picture extends Media implements Printable {
     private final boolean itIsBlackAndWhitePicture;
 
-    public Picture(String creator, Calendar date, TypeOfMessage typeOfMessage, int realSize,
+    public Picture(String creator, Date date, TypeOfMessage typeOfMessage, int realSize,
                    boolean itIsBlackAndWhitePicture, String message) {
         super(creator, date, typeOfMessage, realSize, message);
         this.itIsBlackAndWhitePicture = itIsBlackAndWhitePicture;

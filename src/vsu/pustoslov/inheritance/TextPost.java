@@ -1,11 +1,11 @@
 package vsu.pustoslov.inheritance;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class TextPost extends AbstractPost implements Printable {
     private final int numberOfWords;
 
-    public TextPost(String creator, Calendar date, TypeOfMessage typeOfMessage, int numberOfWords, String message) {
+    public TextPost(String creator, Date date, TypeOfMessage typeOfMessage, int numberOfWords, String message) {
         super(creator, date, typeOfMessage, message);
         this.numberOfWords = numberOfWords;
     }
