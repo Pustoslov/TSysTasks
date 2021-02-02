@@ -1,6 +1,6 @@
-##Tasks
+## Tasks
 
-####[1. Inheritance & Interfaces](.src/vsu/pustoslov/inheritance)
+#### [1. Inheritance & Interfaces](./src/vsu/pustoslov/inheritance)
 
 Нужно реализовать следующую структуру классов на тему «Виды записей в соц. сетях».
 
