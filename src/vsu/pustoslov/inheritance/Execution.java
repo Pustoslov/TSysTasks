@@ -20,37 +20,40 @@ public class Execution {
         for (AbstractPost abstractPost : arrOfAbstractPosts) {
             abstractPost.showContent();
             abstractPost.showMaxSizeOfPost();
-
-            if (abstractPost instanceof TextPost) {
-                ((TextPost) abstractPost).printPost();
-                ((TextPost) abstractPost).printNumberOfWords();
-            }
-
-            if (abstractPost instanceof Printable) {
-                ((Printable) abstractPost).printPost();
-            }
-
-            if (abstractPost instanceof Playable) {
-                ((Playable) abstractPost).play();
-            }
-
-            if (abstractPost instanceof Media) {
-                ((Media) abstractPost).printRealSize();
-            }
-
-            if (abstractPost instanceof Music) {
-                ((Music) abstractPost).printTrackDuration();
-            }
-
-            if (abstractPost instanceof Picture) {
-                ((Picture) abstractPost).printBlackAndWhitePicture();
-            }
-
-            if (abstractPost instanceof Video) {
-                ((Video) abstractPost).printResolution();
-            }
-
-            System.out.println("----------------------------");
+            printSpecificInfo(abstractPost);
         }
+    }
+
+    private static void printSpecificInfo (AbstractPost abstractPost) {
+        if (abstractPost instanceof TextPost) {
+            ((TextPost) abstractPost).printPost();
+            ((TextPost) abstractPost).printNumberOfWords();
+        }
+
+        if (abstractPost instanceof Printable) {
+            ((Printable) abstractPost).printPost();
+        }
+
+        if (abstractPost instanceof Playable) {
+            ((Playable) abstractPost).play();
+        }
+
+        if (abstractPost instanceof Media) {
+            ((Media) abstractPost).printRealSize();
+        }
+
+        if (abstractPost instanceof Music) {
+            ((Music) abstractPost).printTrackDuration();
+        }
+
+        if (abstractPost instanceof Picture) {
+            ((Picture) abstractPost).printBlackAndWhitePicture();
+        }
+
+        if (abstractPost instanceof Video) {
+            ((Video) abstractPost).printResolution();
+        }
+
+        System.out.println("----------------------------");
     }
 }
