@@ -4,5 +4,6 @@ public enum Status {
     LOADED,
     WORKING,
     STOPPED,
-    UNLOADED
+    UNLOADED,
+    ERROR
 }
