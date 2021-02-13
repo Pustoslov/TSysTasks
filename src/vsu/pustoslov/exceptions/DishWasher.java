@@ -5,7 +5,7 @@ public class DishWasher implements Washable {
 
     private final int dishesToLoad;
     private Status status;
-    private int dirtyDishes;
+    private final Dish[] arrOfDishes;
 
     /**
      * Setting the dishWasher.
@@ -14,18 +14,17 @@ public class DishWasher implements Washable {
      * @throws IllegalArgumentException if limitOfDishes < 0.
      */
     public DishWasher(int dishesToLoad) {
-        if (checkPossibleDishesToLoad(dishesToLoad)) {
-            throw new IllegalArgumentException("Sorry, limit of dishes to wash from 1 to " + LIMIT_OF_DISHES);
-        }
+        checkPossibleDishesToLoad(dishesToLoad);
+        arrOfDishes = new Dish[dishesToLoad];
 
         this.dishesToLoad = dishesToLoad;
     }
 
-    private boolean checkPossibleDishesToLoad(int dishesToLoad) {
-        if (dishesToLoad <= 0) {
-            return true;
+    private void checkPossibleDishesToLoad(int dishesToLoad) {
+        if (dishesToLoad <= 0 || LIMIT_OF_DISHES < dishesToLoad) {
+            throw new IllegalArgumentException("Sorry, limit of dishes to wash from 1 to " + LIMIT_OF_DISHES
+                    + ". When you wanna load: " + dishesToLoad);
         }
-        return LIMIT_OF_DISHES < dishesToLoad;
     }
 
     /**
@@ -38,18 +37,19 @@ public class DishWasher implements Washable {
     public void loadDishes() {
         if (status == Status.LOADED || status == Status.WORKING) {
             status = Status.ERROR;
-            System.out.println("Status: " + status);
+            System.out.println("-------Status: " + status);
             throw new IllegalStatusException();
         }
 
-        dirtyDishes = 0;
-        while (dirtyDishes < dishesToLoad) {
-            dirtyDishes++;
-            System.out.println("Dirty dishes in washer total: " + dirtyDishes);
+        TypesOfDishes[] typesOfDishes = TypesOfDishes.values();
+        for (int i = 0; i < dishesToLoad; i++) {
+            arrOfDishes[i] = new Dish(typesOfDishes[(int) (Math.random() * typesOfDishes.length)], true);
+            System.out.println("Dirty dishes in washer total: " + i);
+            System.out.println(arrOfDishes[i]);
         }
 
         status = Status.LOADED;
-        System.out.println("Status: " + status);
+        System.out.println("-------Status: " + status);
     }
 
     /**
@@ -62,12 +62,16 @@ public class DishWasher implements Washable {
     public void startWashing() {
         if (status == Status.WORKING || status == Status.UNLOADED) {
             status = Status.ERROR;
-            System.out.println("Status: " + status);
+            System.out.println("-------Status: " + status);
             throw new IllegalStatusException();
         }
 
+        for (Dish everyDish : arrOfDishes) {
+            everyDish.setDirty(false);
+        }
+
         status = Status.WORKING;
-        System.out.println("Status: " + status);
+        System.out.println("-------Status: " + status);
     }
 
     /**
@@ -80,10 +84,10 @@ public class DishWasher implements Washable {
     public void stopWashing() {
         if (status == Status.WORKING) {
             status = Status.STOPPED;
-            System.out.println("Status: " + status);
+            System.out.println("-------Status: " + status);
         } else {
             status = Status.ERROR;
-            System.out.println("Status: " + status);
+            System.out.println("-------Status: " + status);
             throw new IllegalStatusException();
         }
     }
@@ -98,13 +102,20 @@ public class DishWasher implements Washable {
     public void getDishes() {
         if (status == Status.UNLOADED || status == Status.WORKING) {
             status = Status.ERROR;
-            System.out.println("Status: " + status);
+            System.out.println("-------Status: " + status);
             throw new IllegalStatusException();
         }
 
-        dirtyDishes = 0;
+        int dirtyDishes = 0;
+        for (Dish everyDish : arrOfDishes) {
+            if (everyDish.isDirty()) {
+                dirtyDishes++;
+            }
+            everyDish = null;
+        }
+
         status = Status.UNLOADED;
         System.out.println("Number of dirty dishes: " + dirtyDishes);
-        System.out.println("Status: " + status);
+        System.out.println("-------Status: " + status);
     }
 }

@@ -13,28 +13,32 @@ public class Main {
         dishWasher.startWashing();
         dishWasher.stopWashing();
         dishWasher.getDishes();
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
+
+        dishWasher.loadDishes();
+        dishWasher.getDishes();
+        System.out.println("-------------------------\n");
 
         try {
             dishWasher.startWashing();
         } catch (IllegalStatusException e) {
             System.out.println("Load machine firstly, please.");
         }
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
 
         try {
             dishWasher.startWashing();
         } catch (IllegalStatusException e) {
             System.out.println("Machine isn't working, try again.");
         }
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
 
         try {
             dishWasher.getDishes();
         } catch (IllegalStatusException e) {
             System.out.println("Machine is empty, sorry.");
         }
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
 
         try {
             dishWasher.loadDishes();
@@ -43,7 +47,7 @@ public class Main {
         } catch (IllegalStatusException e) {
             System.out.println("Machine still working.");
         }
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
 
         try {
             dishWasher.loadDishes();
@@ -52,7 +56,7 @@ public class Main {
         } catch (IllegalStatusException e) {
             System.out.println("Machine is full already.");
         }
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
 
         try {
             dishWasher.loadDishes();
@@ -60,6 +64,6 @@ public class Main {
         } catch (IllegalStatusException e) {
             System.out.println("You've already loaded dishes.");
         }
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\n");
     }
 }
